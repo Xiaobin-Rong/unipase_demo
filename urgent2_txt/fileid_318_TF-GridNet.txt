@@ -1,0 +1,1 @@
+fileid_318: [CER]=7.57%, [text]="je dois choisir ce qui m est dû et que m est il dû quel peine affective ou quel amant me méritait moi qui me suis fait un principe de ne connaître aucun repos pendant toute ma vie", [Delete]=8, [Insert]=2, [Replace]=4, [Equal]=173.

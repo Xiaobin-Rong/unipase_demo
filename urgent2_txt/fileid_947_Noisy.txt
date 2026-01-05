@@ -1,0 +1,1 @@
+fileid_947: [CER]=90.00%, [text]="它为太阳系的核电所提供的氧化电能及氧气输光的解释 ", [Delete]=0, [Insert]=5, [Replace]=13, [Equal]=7.

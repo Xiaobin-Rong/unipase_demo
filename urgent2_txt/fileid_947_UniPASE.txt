@@ -1,0 +1,1 @@
+fileid_947: [CER]=10.00%, [text]="他为太阳飞者和月球的颜色变化提出过解释 ", [Delete]=0, [Insert]=0, [Replace]=2, [Equal]=18.

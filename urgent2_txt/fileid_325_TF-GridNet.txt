@@ -1,0 +1,1 @@
+fileid_325: [CER]=16.06%, [text]="ordre qui se divise est en cinq familles et qui comprend la plus grande partie des poissons de luxe dieu la carpe le brochure pour fit le canadien avec un certain mépond des poissons de", [Delete]=14, [Insert]=6, [Replace]=11, [Equal]=168.

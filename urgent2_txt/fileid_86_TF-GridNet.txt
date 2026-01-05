@@ -1,0 +1,1 @@
+fileid_86: [CER]=25.76%, [text]="in the departure of mister johnston i was reported by bohero yesterday", [Delete]=5, [Insert]=9, [Replace]=3, [Equal]=58.

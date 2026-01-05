@@ -1,0 +1,1 @@
+fileid_325: [CER]=1.55%, [text]="ordre qui se divise en cinq familles et qui comprend la plus grande partie des poissons d eau douce type la carpe le brocher pouf fit le canadien avec un certain mépris des poissons d eau douce", [Delete]=0, [Insert]=0, [Replace]=3, [Equal]=190.

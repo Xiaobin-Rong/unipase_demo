@@ -1,0 +1,1 @@
+fileid_252: [CER]=68.57%, [text]="que cerraban la perspectiva al otro lado de los cristales ligeramente turbios por la humedad exterior no digo que traigas niños de múltiples y puntiagudos dedos", [Delete]=53, [Insert]=3, [Replace]=88, [Equal]=69.

@@ -1,0 +1,1 @@
+fileid_252: [CER]=1.43%, [text]="que un palo compuesto no parece palo no digo que traigas dijes ni galas ni que siendo jueste vistas como soldado sino que te adornes con el hábito que tu oficio requiere con tal que sea limpia y bien compuesto", [Delete]=1, [Insert]=0, [Replace]=2, [Equal]=207.

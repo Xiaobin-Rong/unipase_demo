@@ -1,0 +1,1 @@
+fileid_318: [CER]=8.11%, [text]="je dois choisir ce qui m est dû et que m est il dû qu elle peine afflictive auquel amort y méritait je m en qui me suis fait un principe de ne connaître aucun repos pendant toute la vie", [Delete]=3, [Insert]=3, [Replace]=9, [Equal]=173.

@@ -1,0 +1,1 @@
+fileid_86: [text]="the departure of mr johnston was reported by the herald yesterday "

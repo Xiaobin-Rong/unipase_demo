@@ -1,0 +1,1 @@
+fileid_325: [CER]=16.06%, [text]="andre qui se divise en cinq familles et qui comprend la plus grande partie des poissons de douce qui coûte la carte le brochure pouve fit le galavien avec un certain médecin des poissons de douce ", [Delete]=7, [Insert]=10, [Replace]=14, [Equal]=172.

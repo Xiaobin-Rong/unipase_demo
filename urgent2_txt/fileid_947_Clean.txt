@@ -1,0 +1,1 @@
+fileid_947: [CER]=0.00%, [text]="他为太阳黑子和月球的颜色变化提出过解释 ", [Delete]=0, [Insert]=0, [Replace]=0, [Equal]=20.
