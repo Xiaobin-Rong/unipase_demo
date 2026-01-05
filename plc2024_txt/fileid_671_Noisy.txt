@@ -1,0 +1,1 @@
+fileid_671: [WER]=6.06%, [text]="floss every day but a much more relevant one of this year is was to produce or support a weekly liberal fox community podcast as it is turned out i have not done much", [Delete]=0, [Insert]=1, [Replace]=1, [Equal]=32.

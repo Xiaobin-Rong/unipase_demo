@@ -1,0 +1,1 @@
+fileid_432: [WER]=0.00%, [text]="but surprisingly capable roman catholic priest father brown is ability to uncover the truth behind the mystery continually surpasses that of the experts around him", [Delete]=0, [Insert]=0, [Replace]=0, [Equal]=25.

@@ -1,0 +1,1 @@
+fileid_159: [WER]=15.15%, [text]="thanks so much for sending these along and for everything else you do for librivox i know it may sound a bit shallow but these are some feedback on how i make my day cheers", [Delete]=0, [Insert]=2, [Replace]=3, [Equal]=30.

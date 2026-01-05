@@ -1,0 +1,1 @@
+fileid_315: [WER]=20.83%, [text]="that pretty much covers the whole spectrum of things the range of my interest is rather wide how a good adventurer", [Delete]=3, [Insert]=0, [Replace]=2, [Equal]=19.
