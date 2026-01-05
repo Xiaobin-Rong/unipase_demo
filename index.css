@@ -1,0 +1,430 @@
+/* 全局样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #2d3748;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* 页头样式 */
+.header {
+    background: linear-gradient(135deg, #fefce8 0%, #fef3c7 50%, #fef9c3 100%);
+    color: #1e293b;
+    padding: 50px 20px 40px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid #fbbf24;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f59e0b, #eab308, #f59e0b);
+}
+
+.header h1 {
+    margin: 0 0 25px 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.authors {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    color: #374151;
+}
+
+.affiliations {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.authors sup, .affiliations sup {
+    font-size: 0.8em;
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+/* 按钮样式 */
+.btn-container {
+    text-align: center;
+    padding: 25px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    margin: 0 auto;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%);
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 6px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* 主要内容容器 */
+.narrow-container {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Abstract Section */
+.abstract-section h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #f59e0b;
+    padding-bottom: 10px;
+}
+
+.abstract-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.abstract-text p {
+    margin-bottom: 18px;
+    text-indent: 2em;
+}
+
+.abstract-text p:first-child {
+    text-indent: 0;
+}
+
+.framework-image {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.framework-image img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-top: 12px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Section Title */
+.section-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #f59e0b;
+    padding-bottom: 10px;
+}
+
+/* 文件区块样式 */
+.file-section {
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f1f5f9;
+}
+
+.file-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.file-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #1e293b;
+    padding: 0;
+    /* border-radius: 10px; */
+    display: inline-block;
+    /* border: 1px solid #fbbf24; */
+    border: none; /* 去掉边框 */
+}
+
+/* 音频卡片网格布局 */
+.audio-grid-c5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    margin-bottom: 12px;
+}
+
+.audio-grid-c4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 12px;
+}
+
+/* .audio-grid-c3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 12px;
+} */
+
+.audio-grid-c3 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 关键 */
+    gap: 25px;
+    margin-bottom: 12px;
+}
+
+/* 前 3 个：第一行，每个占 2 列 → 3 个刚好一行 */
+.audio-grid-c3 .audio-card:nth-child(-n+3) {
+    grid-column: span 2;
+}
+
+/* 后 2 个：第二行，每个占 3 列 → 自动居中 */
+.audio-grid-c3 .audio-card:nth-child(n+4) {
+    grid-column: span 3;
+}
+
+
+.audio-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.audio-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #f59e0b;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.card-image {
+    margin-bottom: 15px;
+}
+
+.card-image img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.audio-card:hover .card-image img {
+    transform: scale(1.01);
+}
+
+.card-audio {
+    margin-top: 12px;
+}
+
+.card-audio audio {
+    width: 100%;
+    border-radius: 20px;
+    outline: none;
+}
+
+.card-audio audio::-webkit-media-controls-panel {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 20px;
+}
+
+/* 引用样式 */
+.citation {
+    text-align: left;
+    margin-top: 40px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-left: 4px solid #f59e0b;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.citation p {
+    margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .narrow-container {
+        margin: 20px;
+        padding: 25px;
+    }
+    
+    .audio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 40px 20px 30px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .authors {
+        font-size: 1.2rem;
+    }
+
+    .affiliations {
+        font-size: 1rem;
+    }
+
+    .file-section {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .file-title {
+        font-size: 20px;
+        padding: 12px 25px;
+    }
+
+    .audio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        margin: 5px;
+        display: block;
+        width: 180px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .abstract-section h2,
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .abstract-text {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .abstract-text p {
+        text-indent: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .narrow-container {
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    .file-section {
+        padding: 15px;
+    }
+    
+    .file-title {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+    
+    .audio-card {
+        padding: 15px;
+    }
+    
+    .card-image img {
+        max-width: 100%;
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UniPASE: A Generative Model for Universal Speech Enhancement with High Fidelity and Low Hallucinations">
+    <meta name="author" content="Xiaobin-Rong">
+
+    <title>UniPASE Demo</title>
+
+    <!-- 引入Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+    <!-- 引入CSS文件 -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- 页头 -->
+    <div class="header">
+        <h1>UniPASE: A Generative Model for Universal Speech Enhancement <br> with High Fidelity and Low Hallucinations</h1>
+        <div class="authors">
+            Xiaobin Rong<sup>1,2</sup>, Zheng Wang<sup>1,2</sup>, Yushi Wang<sup>1,2</sup>, Jun Gao<sup>1,2</sup>, Jing Lu<sup>1,2</sup>
+        </div>
+        <div class="affiliations">
+            <sup>1</sup>Key Laboratory of Modern Acoustics, Nanjing University<br>
+            <sup>2</sup>NJU-Horizon Intelligent Audio Lab, Horizon Robotics
+        </div>
+    </div>
+
+    <!-- 代码 & paper -->
+    <!-- <div class="btn-container">
+        <a class="btn" href="https://arxiv.org/abs/">📄 ArXiv Paper</a>
+    </div> -->
+
+    <!-- Abstract Section -->
+    <div class="narrow-container">
+        <div class="abstract-section">
+            <h2>Abstract</h2>
+            <div class="abstract-text">
+                <p>
+                    Universal speech enhancement (USE) aims to restore speech signals from diverse distortions across multiple sampling rates.
+                    We propose UniPASE, an extension of the low-hallucination PASE framework tailored for USE. 
+                    At its core is DeWavLM-Omni, a unified representation-level enhancement module fine-tuned from WavLM via knowledge distillation on a large-scale supervised multi-distortion dataset.
+                    This module directly converts distorted waveforms into clean and linguistically faithful phonetic representations, ensuring robust enhancement with minimal linguistic hallucination. 
+                    Based on these enhanced phonetic representations, an Adapter generates clean acoustic representations containing rich acoustic details, which a neural Vocoder uses to reconstruct corresponding high-fidelity 16-kHz waveforms.
+                    A PostNet then performs bandwidth extension to produce 48-kHz waveforms before final resampling to their original rates, enabling seamless handling of inputs and outputs at multiple sampling rates.
+                    Experimental results on several evaluation datasets, covering sub-tasks and full tasks, demonstrate that UniPASE achieves superior or competitive performance compared with existing state-of-the-art models. 
+                    The proposed model also serves as the backbone of our submission to the URGENT 2026 Challenge, which achieved 1st place in the objective evaluation.
+                </p>
+            </div>
+            <div class="framework-image">
+                <img src="model_framework.png" alt="UniPASE Framework">
+            </div>
+            <div class="image-caption">
+                    <strong>Figure 1:</strong> Overview of the proposed UniPASE framework.
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Demos Section -->
+    <div class="narrow-container">
+        <div class="section-title">Audio Demos from the DNS 2020 No-reverb Set</div>
+        
+        <!-- fileid_268 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_268_Noisy.png" data-lightbox="audio-demo-fileid_268" data-title="Noisy">
+                            <img src="dns1_noreverb_fig/fileid_268_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_268_Noisy.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet [1] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_268_TF-GridNet.png" data-lightbox="audio-demo-fileid_268" data-title="TF-GridNet">
+                            <img src="dns1_noreverb_fig/fileid_268_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_268_TF-GridNet.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">StoRM [2] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_268_StoRM.png" data-lightbox="audio-demo-fileid_268" data-title="StoRM">
+                            <img src="dns1_noreverb_fig/fileid_268_StoRM.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_StoRM.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_268_StoRM.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">LLaSE-G1 [3] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_268_LLaSE-G1.png" data-lightbox="audio-demo-fileid_268" data-title="LLaSE-G1">
+                            <img src="dns1_noreverb_fig/fileid_268_LLaSE-G1.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_LLaSE-G1.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_268_LLaSE-G1.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">AnyEnhance [4] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_268_AnyEnhance.png" data-lightbox="audio-demo-fileid_268" data-title="AnyEnhance">
+                            <img src="dns1_noreverb_fig/fileid_268_AnyEnhance.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_AnyEnhance.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_268_AnyEnhance.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">PASE [5] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_268_PASE.png" data-lightbox="audio-demo-fileid_268" data-title="PASE">
+                            <img src="dns1_noreverb_fig/fileid_268_PASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_PASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_268_PASE.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_268_UniPASE.png" data-lightbox="audio-demo-fileid_268" data-title="UniPASE">
+                            <img src="dns1_noreverb_fig/fileid_268_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_268_UniPASE.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_268_Clean.png" data-lightbox="audio-demo-fileid_268" data-title="Clean">
+                            <img src="dns1_noreverb_fig/fileid_268_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_268_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_268_Clean.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_53 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_53_Noisy.png" data-lightbox="audio-demo-fileid_53" data-title="Noisy">
+                            <img src="dns1_noreverb_fig/fileid_53_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_53_Noisy.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet [1] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_53_TF-GridNet.png" data-lightbox="audio-demo-fileid_53" data-title="TF-GridNet">
+                            <img src="dns1_noreverb_fig/fileid_53_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_53_TF-GridNet.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">StoRM [2] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_53_StoRM.png" data-lightbox="audio-demo-fileid_53" data-title="StoRM">
+                            <img src="dns1_noreverb_fig/fileid_53_StoRM.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_StoRM.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_53_StoRM.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">LLaSE-G1 [3] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_53_LLaSE-G1.png" data-lightbox="audio-demo-fileid_53" data-title="LLaSE-G1">
+                            <img src="dns1_noreverb_fig/fileid_53_LLaSE-G1.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_LLaSE-G1.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_53_LLaSE-G1.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">AnyEnhance [4] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_53_AnyEnhance.png" data-lightbox="audio-demo-fileid_53" data-title="AnyEnhance">
+                            <img src="dns1_noreverb_fig/fileid_53_AnyEnhance.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_AnyEnhance.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_53_AnyEnhance.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">PASE [5] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_53_PASE.png" data-lightbox="audio-demo-fileid_53" data-title="PASE">
+                            <img src="dns1_noreverb_fig/fileid_53_PASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_PASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_53_PASE.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_53_UniPASE.png" data-lightbox="audio-demo-fileid_53" data-title="UniPASE">
+                            <img src="dns1_noreverb_fig/fileid_53_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_53_UniPASE.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="dns1_noreverb_fig/fileid_53_Clean.png" data-lightbox="audio-demo-fileid_53" data-title="Clean">
+                            <img src="dns1_noreverb_fig/fileid_53_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_noreverb_txt/fileid_53_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_noreverb_wav/fileid_53_Clean.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="narrow-container">
+        <div class="section-title">Audio Demos from the DNS 2020 With-reverb Set</div>
+
+        <!-- fileid_17 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_17_Noisy.png" data-lightbox="audio-demo-fileid_17" data-title="Noisy">
+                            <img src="dns1_withreverb_fig/fileid_17_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_17_Noisy.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet [1] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_17_TF-GridNet.png" data-lightbox="audio-demo-fileid_17" data-title="TF-GridNet">
+                            <img src="dns1_withreverb_fig/fileid_17_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_17_TF-GridNet.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">StoRM [2] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_17_StoRM.png" data-lightbox="audio-demo-fileid_17" data-title="StoRM">
+                            <img src="dns1_withreverb_fig/fileid_17_StoRM.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_StoRM.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_17_StoRM.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">LLaSE-G1 [3] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_17_LLaSE-G1.png" data-lightbox="audio-demo-fileid_17" data-title="LLaSE-G1">
+                            <img src="dns1_withreverb_fig/fileid_17_LLaSE-G1.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_LLaSE-G1.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_17_LLaSE-G1.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">AnyEnhance [4] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_17_AnyEnhance.png" data-lightbox="audio-demo-fileid_17" data-title="AnyEnhance">
+                            <img src="dns1_withreverb_fig/fileid_17_AnyEnhance.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_AnyEnhance.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_17_AnyEnhance.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">PASE [5] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_17_PASE.png" data-lightbox="audio-demo-fileid_17" data-title="PASE">
+                            <img src="dns1_withreverb_fig/fileid_17_PASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_PASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_17_PASE.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_17_UniPASE.png" data-lightbox="audio-demo-fileid_17" data-title="UniPASE">
+                            <img src="dns1_withreverb_fig/fileid_17_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_17_UniPASE.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_17_Clean.png" data-lightbox="audio-demo-fileid_17" data-title="Clean">
+                            <img src="dns1_withreverb_fig/fileid_17_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_17_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_17_Clean.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_290 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_290_Noisy.png" data-lightbox="audio-demo-fileid_290" data-title="Noisy">
+                            <img src="dns1_withreverb_fig/fileid_290_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_290_Noisy.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet [1] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_290_TF-GridNet.png" data-lightbox="audio-demo-fileid_290" data-title="TF-GridNet">
+                            <img src="dns1_withreverb_fig/fileid_290_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_290_TF-GridNet.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">StoRM [2] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_290_StoRM.png" data-lightbox="audio-demo-fileid_290" data-title="StoRM">
+                            <img src="dns1_withreverb_fig/fileid_290_StoRM.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_StoRM.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_290_StoRM.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">LLaSE-G1 [3] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_290_LLaSE-G1.png" data-lightbox="audio-demo-fileid_290" data-title="LLaSE-G1">
+                            <img src="dns1_withreverb_fig/fileid_290_LLaSE-G1.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_LLaSE-G1.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_290_LLaSE-G1.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">AnyEnhance [4] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_290_AnyEnhance.png" data-lightbox="audio-demo-fileid_290" data-title="AnyEnhance">
+                            <img src="dns1_withreverb_fig/fileid_290_AnyEnhance.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_AnyEnhance.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_290_AnyEnhance.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">PASE [5] Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_290_PASE.png" data-lightbox="audio-demo-fileid_290" data-title="PASE">
+                            <img src="dns1_withreverb_fig/fileid_290_PASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_PASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_290_PASE.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_290_UniPASE.png" data-lightbox="audio-demo-fileid_290" data-title="UniPASE">
+                            <img src="dns1_withreverb_fig/fileid_290_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_290_UniPASE.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="dns1_withreverb_fig/fileid_290_Clean.png" data-lightbox="audio-demo-fileid_290" data-title="Clean">
+                            <img src="dns1_withreverb_fig/fileid_290_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="dns1_withreverb_txt/fileid_290_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="dns1_withreverb_wav/fileid_290_Clean.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="narrow-container">
+        <div class="section-title">Audio Demos from the PLC 2024 Validation Set</div>
+            <!-- fileid_671 -->
+            <div class="file-section">
+                <div class="file-header">
+                    <div class="file-title">
+                        <span class="file-desc"
+                            data-txt="plc2024_txt/fileid_671_Ref.txt"
+                            data-mode="with-id">
+                        </span>
+                    </div>
+                </div>
+                <div class="audio-grid-c3">
+
+                    <div class="audio-card">
+                        <div class="card-title">Noisy Signal</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_671_Noisy.png" data-lightbox="audio-demo-fileid_671" data-title="Noisy">
+                                <img src="plc2024_fig/fileid_671_Noisy.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_671_Noisy.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_671_Noisy.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">TF-GridNet Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_671_TF-GridNet.png" data-lightbox="audio-demo-fileid_671" data-title="TF-GridNet">
+                                <img src="plc2024_fig/fileid_671_TF-GridNet.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_671_TF-GridNet.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_671_TF-GridNet.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">LLaSE-G1 Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_671_LLaSE-G1.png" data-lightbox="audio-demo-fileid_671" data-title="LLaSE-G1">
+                                <img src="plc2024_fig/fileid_671_LLaSE-G1.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_671_LLaSE-G1.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_671_LLaSE-G1.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">UniPASE Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_671_UniPASE.png" data-lightbox="audio-demo-fileid_671" data-title="UniPASE">
+                                <img src="plc2024_fig/fileid_671_UniPASE.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_671_UniPASE.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_671_UniPASE.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">Clean</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_671_Clean.png" data-lightbox="audio-demo-fileid_671" data-title="Clean">
+                                <img src="plc2024_fig/fileid_671_Clean.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_671_Clean.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_671_Clean.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fileid_432 -->
+            <div class="file-section">
+                <div class="file-header">
+                    <div class="file-title">
+                        <span class="file-desc"
+                            data-txt="plc2024_txt/fileid_432_Ref.txt"
+                            data-mode="with-id">
+                        </span>
+                    </div>
+                </div>
+                <div class="audio-grid-c3">
+
+                    <div class="audio-card">
+                        <div class="card-title">Noisy Signal</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_432_Noisy.png" data-lightbox="audio-demo-fileid_432" data-title="Noisy">
+                                <img src="plc2024_fig/fileid_432_Noisy.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_432_Noisy.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_432_Noisy.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">TF-GridNet Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_432_TF-GridNet.png" data-lightbox="audio-demo-fileid_432" data-title="TF-GridNet">
+                                <img src="plc2024_fig/fileid_432_TF-GridNet.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_432_TF-GridNet.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_432_TF-GridNet.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">LLaSE-G1 Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_432_LLaSE-G1.png" data-lightbox="audio-demo-fileid_432" data-title="LLaSE-G1">
+                                <img src="plc2024_fig/fileid_432_LLaSE-G1.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_432_LLaSE-G1.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_432_LLaSE-G1.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">UniPASE Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_432_UniPASE.png" data-lightbox="audio-demo-fileid_432" data-title="UniPASE">
+                                <img src="plc2024_fig/fileid_432_UniPASE.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_432_UniPASE.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_432_UniPASE.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">Clean</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_432_Clean.png" data-lightbox="audio-demo-fileid_432" data-title="Clean">
+                                <img src="plc2024_fig/fileid_432_Clean.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_432_Clean.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_432_Clean.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fileid_159 -->
+            <div class="file-section">
+                <div class="file-header">
+                    <div class="file-title">
+                        <span class="file-desc"
+                            data-txt="plc2024_txt/fileid_159_Ref.txt"
+                            data-mode="with-id">
+                        </span>
+                    </div>
+                </div>
+                <div class="audio-grid-c3">
+
+                    <div class="audio-card">
+                        <div class="card-title">Noisy Signal</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_159_Noisy.png" data-lightbox="audio-demo-fileid_159" data-title="Noisy">
+                                <img src="plc2024_fig/fileid_159_Noisy.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_159_Noisy.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_159_Noisy.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">TF-GridNet Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_159_TF-GridNet.png" data-lightbox="audio-demo-fileid_159" data-title="TF-GridNet">
+                                <img src="plc2024_fig/fileid_159_TF-GridNet.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_159_TF-GridNet.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_159_TF-GridNet.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">LLaSE-G1 Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_159_LLaSE-G1.png" data-lightbox="audio-demo-fileid_159" data-title="LLaSE-G1">
+                                <img src="plc2024_fig/fileid_159_LLaSE-G1.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_159_LLaSE-G1.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_159_LLaSE-G1.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">UniPASE Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_159_UniPASE.png" data-lightbox="audio-demo-fileid_159" data-title="UniPASE">
+                                <img src="plc2024_fig/fileid_159_UniPASE.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_159_UniPASE.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_159_UniPASE.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">Clean</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_159_Clean.png" data-lightbox="audio-demo-fileid_159" data-title="Clean">
+                                <img src="plc2024_fig/fileid_159_Clean.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_159_Clean.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_159_Clean.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fileid_234 -->
+            <div class="file-section">
+                <div class="file-header">
+                    <div class="file-title">
+                        <span class="file-desc"
+                            data-txt="plc2024_txt/fileid_234_Ref.txt"
+                            data-mode="with-id">
+                        </span>
+                    </div>
+                </div>
+                <div class="audio-grid-c3">
+
+                    <div class="audio-card">
+                        <div class="card-title">Noisy Signal</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_234_Noisy.png" data-lightbox="audio-demo-fileid_234" data-title="Noisy">
+                                <img src="plc2024_fig/fileid_234_Noisy.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_234_Noisy.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_234_Noisy.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">TF-GridNet Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_234_TF-GridNet.png" data-lightbox="audio-demo-fileid_234" data-title="TF-GridNet">
+                                <img src="plc2024_fig/fileid_234_TF-GridNet.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_234_TF-GridNet.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_234_TF-GridNet.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">LLaSE-G1 Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_234_LLaSE-G1.png" data-lightbox="audio-demo-fileid_234" data-title="LLaSE-G1">
+                                <img src="plc2024_fig/fileid_234_LLaSE-G1.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_234_LLaSE-G1.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_234_LLaSE-G1.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">UniPASE Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_234_UniPASE.png" data-lightbox="audio-demo-fileid_234" data-title="UniPASE">
+                                <img src="plc2024_fig/fileid_234_UniPASE.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_234_UniPASE.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_234_UniPASE.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">Clean</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_234_Clean.png" data-lightbox="audio-demo-fileid_234" data-title="Clean">
+                                <img src="plc2024_fig/fileid_234_Clean.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_234_Clean.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_234_Clean.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fileid_388 -->
+            <div class="file-section">
+                <div class="file-header">
+                    <div class="file-title">
+                        <span class="file-desc"
+                            data-txt="plc2024_txt/fileid_388_Ref.txt"
+                            data-mode="with-id">
+                        </span>
+                    </div>
+                </div>
+                <div class="audio-grid-c3">
+
+                    <div class="audio-card">
+                        <div class="card-title">Noisy Signal</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_388_Noisy.png" data-lightbox="audio-demo-fileid_388" data-title="Noisy">
+                                <img src="plc2024_fig/fileid_388_Noisy.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_388_Noisy.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_388_Noisy.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">TF-GridNet Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_388_TF-GridNet.png" data-lightbox="audio-demo-fileid_388" data-title="TF-GridNet">
+                                <img src="plc2024_fig/fileid_388_TF-GridNet.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_388_TF-GridNet.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_388_TF-GridNet.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">LLaSE-G1 Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_388_LLaSE-G1.png" data-lightbox="audio-demo-fileid_388" data-title="LLaSE-G1">
+                                <img src="plc2024_fig/fileid_388_LLaSE-G1.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_388_LLaSE-G1.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_388_LLaSE-G1.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">UniPASE Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_388_UniPASE.png" data-lightbox="audio-demo-fileid_388" data-title="UniPASE">
+                                <img src="plc2024_fig/fileid_388_UniPASE.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_388_UniPASE.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_388_UniPASE.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">Clean</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_388_Clean.png" data-lightbox="audio-demo-fileid_388" data-title="Clean">
+                                <img src="plc2024_fig/fileid_388_Clean.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_388_Clean.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_388_Clean.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fileid_315 -->
+            <div class="file-section">
+                <div class="file-header">
+                    <div class="file-title">
+                        <span class="file-desc"
+                            data-txt="plc2024_txt/fileid_315_Ref.txt"
+                            data-mode="with-id">
+                        </span>
+                    </div>
+                </div>
+                <div class="audio-grid-c3">
+
+                    <div class="audio-card">
+                        <div class="card-title">Noisy Signal</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_315_Noisy.png" data-lightbox="audio-demo-fileid_315" data-title="Noisy">
+                                <img src="plc2024_fig/fileid_315_Noisy.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_315_Noisy.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_315_Noisy.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">TF-GridNet Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_315_TF-GridNet.png" data-lightbox="audio-demo-fileid_315" data-title="TF-GridNet">
+                                <img src="plc2024_fig/fileid_315_TF-GridNet.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_315_TF-GridNet.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_315_TF-GridNet.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">LLaSE-G1 Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_315_LLaSE-G1.png" data-lightbox="audio-demo-fileid_315" data-title="LLaSE-G1">
+                                <img src="plc2024_fig/fileid_315_LLaSE-G1.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_315_LLaSE-G1.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_315_LLaSE-G1.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">UniPASE Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_315_UniPASE.png" data-lightbox="audio-demo-fileid_315" data-title="UniPASE">
+                                <img src="plc2024_fig/fileid_315_UniPASE.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_315_UniPASE.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_315_UniPASE.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">Clean</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_315_Clean.png" data-lightbox="audio-demo-fileid_315" data-title="Clean">
+                                <img src="plc2024_fig/fileid_315_Clean.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_315_Clean.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_315_Clean.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fileid_344 -->
+            <div class="file-section">
+                <div class="file-header">
+                    <div class="file-title">
+                        <span class="file-desc"
+                            data-txt="plc2024_txt/fileid_344_Ref.txt"
+                            data-mode="with-id">
+                        </span>
+                    </div>
+                </div>
+                <div class="audio-grid-c3">
+
+                    <div class="audio-card">
+                        <div class="card-title">Noisy Signal</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_344_Noisy.png" data-lightbox="audio-demo-fileid_344" data-title="Noisy">
+                                <img src="plc2024_fig/fileid_344_Noisy.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_344_Noisy.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_344_Noisy.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">TF-GridNet Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_344_TF-GridNet.png" data-lightbox="audio-demo-fileid_344" data-title="TF-GridNet">
+                                <img src="plc2024_fig/fileid_344_TF-GridNet.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_344_TF-GridNet.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_344_TF-GridNet.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">LLaSE-G1 Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_344_LLaSE-G1.png" data-lightbox="audio-demo-fileid_344" data-title="LLaSE-G1">
+                                <img src="plc2024_fig/fileid_344_LLaSE-G1.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_344_LLaSE-G1.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_344_LLaSE-G1.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">UniPASE Output</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_344_UniPASE.png" data-lightbox="audio-demo-fileid_344" data-title="UniPASE">
+                                <img src="plc2024_fig/fileid_344_UniPASE.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_344_UniPASE.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_344_UniPASE.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="card-title">Clean</div>
+                        <div class="card-image">
+                            <a href="plc2024_fig/fileid_344_Clean.png" data-lightbox="audio-demo-fileid_344" data-title="Clean">
+                                <img src="plc2024_fig/fileid_344_Clean.png">
+                            </a>
+                        </div>
+                        <div class="card-desc"
+                            data-txt="plc2024_txt/fileid_344_Clean.txt"
+                            data-mode="no-id">
+                        </div>
+                        <div class="card-audio">
+                            <audio controls>
+                                <source src="plc2024_wav/fileid_344_Clean.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="narrow-container">
+    <div class="section-title">Audio Demos from the URGENT 2025 Non-blind Test Set</div>
+        <!-- fileid_86 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="urgent2_txt/fileid_86_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_86_Noisy.png" data-lightbox="audio-demo-fileid_86" data-title="Noisy">
+                            <img src="urgent2_fig/fileid_86_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_86_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_86_Noisy.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_86_TF-GridNet.png" data-lightbox="audio-demo-fileid_86" data-title="TF-GridNet">
+                            <img src="urgent2_fig/fileid_86_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_86_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_86_TF-GridNet.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_86_UniPASE.png" data-lightbox="audio-demo-fileid_86" data-title="UniPASE">
+                            <img src="urgent2_fig/fileid_86_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_86_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_86_UniPASE.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_86_Clean.png" data-lightbox="audio-demo-fileid_86" data-title="Clean">
+                            <img src="urgent2_fig/fileid_86_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_86_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_86_Clean.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_210 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="urgent2_txt/fileid_210_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_210_Noisy.png" data-lightbox="audio-demo-fileid_210" data-title="Noisy">
+                            <img src="urgent2_fig/fileid_210_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_210_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_210_Noisy.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_210_TF-GridNet.png" data-lightbox="audio-demo-fileid_210" data-title="TF-GridNet">
+                            <img src="urgent2_fig/fileid_210_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_210_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_210_TF-GridNet.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_210_UniPASE.png" data-lightbox="audio-demo-fileid_210" data-title="UniPASE">
+                            <img src="urgent2_fig/fileid_210_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_210_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_210_UniPASE.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_210_Clean.png" data-lightbox="audio-demo-fileid_210" data-title="Clean">
+                            <img src="urgent2_fig/fileid_210_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_210_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_210_Clean.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_252 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="urgent2_txt/fileid_252_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_252_Noisy.png" data-lightbox="audio-demo-fileid_252" data-title="Noisy">
+                            <img src="urgent2_fig/fileid_252_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_252_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_252_Noisy.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_252_TF-GridNet.png" data-lightbox="audio-demo-fileid_252" data-title="TF-GridNet">
+                            <img src="urgent2_fig/fileid_252_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_252_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_252_TF-GridNet.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_252_UniPASE.png" data-lightbox="audio-demo-fileid_252" data-title="UniPASE">
+                            <img src="urgent2_fig/fileid_252_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_252_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_252_UniPASE.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_252_Clean.png" data-lightbox="audio-demo-fileid_252" data-title="Clean">
+                            <img src="urgent2_fig/fileid_252_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_252_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_252_Clean.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- fileid_318 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="urgent2_txt/fileid_318_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_318_Noisy.png" data-lightbox="audio-demo-fileid_318" data-title="Noisy">
+                            <img src="urgent2_fig/fileid_318_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_318_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_318_Noisy.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_318_TF-GridNet.png" data-lightbox="audio-demo-fileid_318" data-title="TF-GridNet">
+                            <img src="urgent2_fig/fileid_318_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_318_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_318_TF-GridNet.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_318_UniPASE.png" data-lightbox="audio-demo-fileid_318" data-title="UniPASE">
+                            <img src="urgent2_fig/fileid_318_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_318_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_318_UniPASE.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_318_Clean.png" data-lightbox="audio-demo-fileid_318" data-title="Clean">
+                            <img src="urgent2_fig/fileid_318_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_318_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_318_Clean.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_325 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="urgent2_txt/fileid_325_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_325_Noisy.png" data-lightbox="audio-demo-fileid_325" data-title="Noisy">
+                            <img src="urgent2_fig/fileid_325_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_325_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_325_Noisy.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_325_TF-GridNet.png" data-lightbox="audio-demo-fileid_325" data-title="TF-GridNet">
+                            <img src="urgent2_fig/fileid_325_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_325_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_325_TF-GridNet.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_325_UniPASE.png" data-lightbox="audio-demo-fileid_325" data-title="UniPASE">
+                            <img src="urgent2_fig/fileid_325_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_325_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_325_UniPASE.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_325_Clean.png" data-lightbox="audio-demo-fileid_325" data-title="Clean">
+                            <img src="urgent2_fig/fileid_325_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_325_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_325_Clean.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_446 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="urgent2_txt/fileid_446_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_446_Noisy.png" data-lightbox="audio-demo-fileid_446" data-title="Noisy">
+                            <img src="urgent2_fig/fileid_446_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_446_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_446_Noisy.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_446_TF-GridNet.png" data-lightbox="audio-demo-fileid_446" data-title="TF-GridNet">
+                            <img src="urgent2_fig/fileid_446_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_446_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_446_TF-GridNet.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_446_UniPASE.png" data-lightbox="audio-demo-fileid_446" data-title="UniPASE">
+                            <img src="urgent2_fig/fileid_446_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_446_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_446_UniPASE.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_446_Clean.png" data-lightbox="audio-demo-fileid_446" data-title="Clean">
+                            <img src="urgent2_fig/fileid_446_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_446_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_446_Clean.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_831 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="urgent2_txt/fileid_831_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_831_Noisy.png" data-lightbox="audio-demo-fileid_831" data-title="Noisy">
+                            <img src="urgent2_fig/fileid_831_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_831_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_831_Noisy.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_831_TF-GridNet.png" data-lightbox="audio-demo-fileid_831" data-title="TF-GridNet">
+                            <img src="urgent2_fig/fileid_831_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_831_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_831_TF-GridNet.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_831_UniPASE.png" data-lightbox="audio-demo-fileid_831" data-title="UniPASE">
+                            <img src="urgent2_fig/fileid_831_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_831_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_831_UniPASE.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_831_Clean.png" data-lightbox="audio-demo-fileid_831" data-title="Clean">
+                            <img src="urgent2_fig/fileid_831_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_831_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_831_Clean.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_947 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title">
+                    <span class="file-desc"
+                        data-txt="urgent2_txt/fileid_947_Ref.txt"
+                        data-mode="with-id">
+                    </span>
+                </div>
+            </div>
+            <div class="audio-grid-c4">
+
+                <div class="audio-card">
+                    <div class="card-title">Noisy Signal</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_947_Noisy.png" data-lightbox="audio-demo-fileid_947" data-title="Noisy">
+                            <img src="urgent2_fig/fileid_947_Noisy.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_947_Noisy.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_947_Noisy.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">TF-GridNet Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_947_TF-GridNet.png" data-lightbox="audio-demo-fileid_947" data-title="TF-GridNet">
+                            <img src="urgent2_fig/fileid_947_TF-GridNet.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_947_TF-GridNet.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_947_TF-GridNet.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">UniPASE Output</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_947_UniPASE.png" data-lightbox="audio-demo-fileid_947" data-title="UniPASE">
+                            <img src="urgent2_fig/fileid_947_UniPASE.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_947_UniPASE.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_947_UniPASE.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Clean</div>
+                    <div class="card-image">
+                        <a href="urgent2_fig/fileid_947_Clean.png" data-lightbox="audio-demo-fileid_947" data-title="Clean">
+                            <img src="urgent2_fig/fileid_947_Clean.png">
+                        </a>
+                    </div>
+                    <div class="card-desc"
+                        data-txt="urgent2_txt/fileid_947_Clean.txt"
+                        data-mode="no-id">
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="urgent2_wav/fileid_947_Clean.flac" type="audio/flac">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 引用 -->
+        <div class="citation">
+            <p>
+                [1] Z.-Q. Wang, S. Cornell, S. Choi, Y. Lee, B.-Y. Kim, and S. Watanabe, “TF-GridNet: Integrating full-and sub-band modeling for speech separation,” IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 31, pp. 3221-3236, 2023.<br><br>
+                [2] J.-M. Lemercier, J. Richter, S. Welker, and T. Gerkmann, “StoRM: A diffusion-based stochastic regeneration model for speech enhancement and dereverberation,” IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 31, pp. 2724-2737, 2023.<br><br>
+                [3] B. Kang, X. Zhu, Z. Zhang, Z. Ye, M. Liu, Z. Wang, Y. Zhu, G. Ma, J. Chen, L. Xiao, C. Weng, W. Xue, and L. Xie, “LLaSE-G1: Incentivizing generalization capability for LLaMA-based speech enhancement,” in Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), Vienna, Austria, Jul. 2025, pp. 13 292-13 305.<br><br>
+                [4] J. Zhang, J. Yang, Z. Fang, Y. Wang, Z. Zhang, Z. Wang, F. Fan, and Z. Wu, “Anyenhance: A unified generative model with prompt-guidance and self-critic for voice enhancement,” IEEE Transactions on Audio, Speech and Language Processing, vol. 33, pp. 3085-3098, 2025.<br><br>
+                [5] X. Rong, Q. Hu, M. Yesilbursa, K. Wojcicki, and J. Lu, “PASE: Leveraging the Phonological Prior of WavLM for Low-Hallucination Generative Speech Enhancement,” in Proceedings of the 40th AAAI Conference on Artificial Intelligence (AAAI 2026), 2026, accepted.<br><br>
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+    document.querySelectorAll("[data-txt]").forEach(el => {
+        const txtPath = el.dataset.txt;
+        const mode = el.dataset.mode || "raw";
+
+        fetch(txtPath)
+            .then(r => r.text())
+            .then(text => {
+                text = text.trim();
+
+                if (mode === "with-id") {
+                    // 匹配 fileid_xxx 和可选的冒号及内容
+                    const match = text.match(/^(fileid_\d+)(:\s*(.*))?$/);
+                    if (match) {
+                        const id = match[1];
+                        const content = match[3] || ""; // 如果没有冒号后内容，就为空
+                        el.innerHTML = `<strong>${id}</strong>${content ? ': ' + content : ''}`;
+                    } else {
+                        el.textContent = text;
+                    }
+
+                } else if (mode === "no-id") {
+                    // 匹配 fileid_xxx: 后面跟的内容
+                    const match = text.match(/^fileid_\d+:\s*(.*)$/);
+                    if (match) {
+                        el.textContent = match[1]; // 去掉 fileid_xxx 和冒号
+                    } else {
+                        el.textContent = text;
+                    }
+
+                } else {
+                    // raw 模式直接显示
+                    el.textContent = text;
+                }
+            })
+            .catch(() => {
+                el.textContent = "";
+            });
+    });
+    </script>
+
+
+
+
+
+</body>
+
+
+</html>
