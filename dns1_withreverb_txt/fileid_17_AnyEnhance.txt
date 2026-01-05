@@ -1,0 +1,1 @@
+fileid_17: [dWER]=30.77%, [text]="the surfaces of steel sheets before they are prated with caster well made from caster beans has gone out of style as an", [Delete]=3, [Insert]=0, [Replace]=5, [Equal]=18.

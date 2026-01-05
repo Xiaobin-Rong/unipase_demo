@@ -1,0 +1,1 @@
+fileid_17: [dWER]=53.85%, [text]="the surfaces of the ointment before they are treated with the castor oil made from castor beads and cloths are just as hard as it is", [Delete]=1, [Insert]=1, [Replace]=12, [Equal]=13.

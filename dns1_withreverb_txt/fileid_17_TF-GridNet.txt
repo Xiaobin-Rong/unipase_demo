@@ -1,0 +1,1 @@
+fileid_17: [dWER]=19.23%, [text]="the surfaces of skewer sheets before they are flitted with tin custard oil made from custard beans has gone out of style as a medicine", [Delete]=1, [Insert]=0, [Replace]=4, [Equal]=21.

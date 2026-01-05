@@ -1,0 +1,1 @@
+fileid_290: [dWER]=61.90%, [text]="this is delightful yeah it is really fun to go over this the viewpoint overlooks the ocean are you looking for an island allow leeway here", [Delete]=0, [Insert]=5, [Replace]=8, [Equal]=13.
