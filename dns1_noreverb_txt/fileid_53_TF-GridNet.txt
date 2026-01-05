@@ -1,0 +1,1 @@
+fileid_53: [dWER]=32.14%, [text]="he leaped once more into the carpet bed and brought up a package of peanuts he ripped down the cellophane chair through it and laid 3 dogs", [Delete]=3, [Insert]=2, [Replace]=4, [Equal]=21.

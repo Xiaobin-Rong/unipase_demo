@@ -1,0 +1,1 @@
+fileid_53: [dWER]=0.00%, [text]="he reached once more into the carpet bag and brought up a package of wieners he ripped down the cellophane carefully and laid 3 dogs on the tinfoil", [Delete]=0, [Insert]=0, [Replace]=0, [Equal]=28.
