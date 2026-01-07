@@ -38,10 +38,23 @@
         <a class="btn" href="https://arxiv.org/abs/">📄 ArXiv Paper</a>
     </div> -->
 
-    <!-- Abstract Section -->
-    
-    <!-- Audio Demos Section -->
+
     <div class="narrow-container">
+        <div class="toc-container">
+            <div class="toc-title">Contents</div>
+            <ol id="toc">
+                <li><a href="#dns1_noreverb_demo">Audio Demos from the DNS 2020 No-reverb Test set</a></li>
+                <li><a href="#dns1_withreverb_demo">Audio Demos from the DNS 2020 With-reverb Test set</a></li>
+                <li><a href="#plc2024_demo">Audio Demos from the PLC 2024 Validation set</a></li>
+                <li><a href="#urgent2_demo">Audio Demos from the URGENT 2025 Non-blind Test set</a></li>
+                <li><a href="#ablation_examples">Audio Examples in Ablation Study</a></li>
+                <li><a href="#references">References</a></li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Audio Demos Section -->
+    <div class="narrow-container" id="dns1_noreverb_demo">
         <div class="section-title">Audio Demos from the DNS 2020 No-reverb Set</div>
         
         <!-- fileid_268 -->
@@ -377,7 +390,7 @@
         </div>
     </div>
 
-    <div class="narrow-container">
+    <div class="narrow-container" id="dns1_withreverb_demo">
         <div class="section-title">Audio Demos from the DNS 2020 With-reverb Set</div>
 
         <!-- fileid_17 -->
@@ -713,7 +726,7 @@
         </div>
     </div>
 
-    <div class="narrow-container">
+    <div class="narrow-container" id="plc2024_demo">
         <div class="section-title">Audio Demos from the PLC 2024 Validation Set</div>
             <!-- fileid_671 -->
             <div class="file-section">
@@ -1479,7 +1492,7 @@
             </div>
     </div>
 
-    <div class="narrow-container">
+    <div class="narrow-container", id="urgent2_demo">
     <div class="section-title">Audio Demos from the URGENT 2025 Non-blind Test Set</div>
         <!-- fileid_86 -->
         <div class="file-section">
@@ -2201,8 +2214,131 @@
                 </div>
             </div>
         </div>
+    </div>
+    
 
-        <!-- 引用 -->
+    <div class="narrow-container", id="ablation_examples">
+    <div class="section-title">Audio Examples in Ablation Study</div>
+        <!-- fileid_340 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title"><strong>Example 1</strong></div>
+            </div>
+            <div class="audio-grid-c2">
+                <div class="audio-card">
+                    <div class="card-title">Enhanced Signal without MSRD</div>
+                    <div class="card-image-large">
+                        <a href="ablation_msrd_fig/fileid_340_NoMsrd.png" data-lightbox="audio-demo-fileid_340" data-title="NoMsrd">
+                            <img src="ablation_msrd_fig/fileid_340_NoMsrd.png">
+                        </a>
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="ablation_msrd_wav/fileid_340_NoMsrd.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Enhanced Signal with MSRD</div>
+                    <div class="card-image-large">
+                        <a href="ablation_msrd_fig/fileid_340_WithMsrd.png" data-lightbox="audio-demo-fileid_340" data-title="WithMsrd">
+                            <img src="ablation_msrd_fig/fileid_340_WithMsrd.png">
+                        </a>
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="ablation_msrd_wav/fileid_340_WithMsrd.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_1220 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title"><strong>Example 2</strong></div>
+            </div>
+            <div class="audio-grid-c2">
+                <div class="audio-card">
+                    <div class="card-title">Enhanced Signal without MSRD</div>
+                    <div class="card-image-large">
+                        <a href="ablation_msrd_fig/fileid_1220_NoMsrd.png" data-lightbox="audio-demo-fileid_1220" data-title="NoMsrd">
+                            <img src="ablation_msrd_fig/fileid_1220_NoMsrd.png">
+                        </a>
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="ablation_msrd_wav/fileid_1220_NoMsrd.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Enhanced Signal with MSRD</div>
+                    <div class="card-image-large">
+                        <a href="ablation_msrd_fig/fileid_1220_WithMsrd.png" data-lightbox="audio-demo-fileid_1220" data-title="WithMsrd">
+                            <img src="ablation_msrd_fig/fileid_1220_WithMsrd.png">
+                        </a>
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="ablation_msrd_wav/fileid_1220_WithMsrd.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fileid_2154 -->
+        <div class="file-section">
+            <div class="file-header">
+                <div class="file-title"><strong>Example 3</strong></div>
+            </div>
+            <div class="audio-grid-c2">
+                <div class="audio-card">
+                    <div class="card-title">Enhanced Signal without MSRD</div>
+                    <div class="card-image-large">
+                        <a href="ablation_msrd_fig/fileid_2154_NoMsrd.png" data-lightbox="audio-demo-fileid_2154" data-title="NoMsrd">
+                            <img src="ablation_msrd_fig/fileid_2154_NoMsrd.png">
+                        </a>
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="ablation_msrd_wav/fileid_2154_NoMsrd.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <div class="card-title">Enhanced Signal with MSRD</div>
+                    <div class="card-image-large">
+                        <a href="ablation_msrd_fig/fileid_2154_WithMsrd.png" data-lightbox="audio-demo-fileid_2154" data-title="WithMsrd">
+                            <img src="ablation_msrd_fig/fileid_2154_WithMsrd.png">
+                        </a>
+                    </div>
+                    <div class="card-audio">
+                        <audio controls>
+                            <source src="ablation_msrd_wav/fileid_2154_WithMsrd.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="narrow-container" id="references">
+    <div class="ref-title">References</div>
+    <!-- 引用 -->
         <div class="citation">
             <p>
                 [1] Z.-Q. Wang, S. Cornell, S. Choi, Y. Lee, B.-Y. Kim, and S. Watanabe, “TF-GridNet: Integrating full-and sub-band modeling for speech separation,” IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 31, pp. 3221-3236, 2023.<br><br>
@@ -2264,4 +2400,3 @@
 
 
 </html>
-
