@@ -106,6 +106,10 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Abstract Section */
 .abstract-section h2 {
     font-family: 'Times New Roman', Times, serif;
@@ -157,6 +161,19 @@ body {
     text-align: center;
 }
 
+/* Refernce Title */
+.ref-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0;
+    text-align: left;
+    border-bottom: none;
+    padding-left: 10px;
+    padding-bottom: 0;
+}
+
 /* Section Title */
 .section-title {
     font-family: 'Times New Roman', Times, serif;
@@ -171,7 +188,7 @@ body {
 
 /* 文件区块样式 */
 .file-section {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     background: white;
     border-radius: 12px;
     padding: 25px;
@@ -235,6 +252,12 @@ body {
     grid-column: span 3;
 }
 
+.audio-grid-c2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 10px;
+}
 
 .audio-card {
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -274,6 +297,19 @@ body {
     transition: transform 0.3s ease;
 }
 
+.card-image-large {
+    margin-bottom: 15px;
+}
+
+.card-image-large img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
 .audio-card:hover .card-image img {
     transform: scale(1.01);
 }
@@ -296,8 +332,8 @@ body {
 /* 引用样式 */
 .citation {
     text-align: left;
-    margin-top: 40px;
-    padding: 25px;
+    margin-top: 5px;
+    padding: 10px;
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
     border-left: 4px solid #f59e0b;
     border-radius: 10px;
@@ -309,6 +345,59 @@ body {
 .citation p {
     margin: 0;
 }
+
+
+/* 目录容器，确保宽度和narrow-container一致且左对齐 */
+#toc-container {
+    max-width: 1400px;       /* 与 narrow-container 对齐 */
+    margin: 0 auto 30px auto; /* 居中容器，但内容左对齐 */
+    padding: 0;
+    text-align: left;         /* 左对齐 */
+}
+
+
+/* 目录列表 */
+#toc {
+    padding-left: 40px;          /* 不要缩进 */
+    margin: 0;
+    list-style: disc;         /* 去掉默认圆点 */
+}
+
+/* 每条目录 */
+#toc li {
+    margin-bottom: 10px;
+    font-size: 1.5rem;        /* 放大字体 */
+    font-weight: 600;
+    text-align: left;
+}
+
+/* 初始化 counter */
+#toc {
+    counter-reset: toc-counter;
+}
+
+/* 链接样式 */
+#toc a {
+    text-decoration: underline;
+    color: #1f3aef;
+    transition: color 0.3s;
+}
+
+#toc a:hover {
+    color: #f59e0b;
+}
+
+.toc-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-align: left;
+    border-bottom: 2px solid #f59e0b;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
 
 /* 响应式设计 */
 @media (max-width: 1200px) {
