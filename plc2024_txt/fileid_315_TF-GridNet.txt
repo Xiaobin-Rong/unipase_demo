@@ -1,1 +1,0 @@
-fileid_315: [WER]=8.33%, [text]="that pretty much covers the whole spectrum of things the range of my interest is rather wide however i have a good adventure", [Delete]=1, [Insert]=0, [Replace]=1, [Equal]=22.
