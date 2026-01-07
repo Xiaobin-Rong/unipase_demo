@@ -39,30 +39,7 @@
     </div> -->
 
     <!-- Abstract Section -->
-    <div class="narrow-container">
-        <div class="abstract-section">
-            <h2>Abstract</h2>
-            <div class="abstract-text">
-                <p>
-                    Universal speech enhancement (USE) aims to restore speech signals from diverse distortions across multiple sampling rates.
-                    We propose UniPASE, an extension of the low-hallucination PASE framework tailored for USE. 
-                    At its core is DeWavLM-Omni, a unified representation-level enhancement module fine-tuned from WavLM via knowledge distillation on a large-scale supervised multi-distortion dataset.
-                    This module directly converts distorted waveforms into clean and linguistically faithful phonetic representations, ensuring robust enhancement with minimal linguistic hallucination. 
-                    Based on these enhanced phonetic representations, an Adapter generates clean acoustic representations containing rich acoustic details, which a neural Vocoder uses to reconstruct corresponding high-fidelity 16-kHz waveforms.
-                    A PostNet then performs bandwidth extension to produce 48-kHz waveforms before final resampling to their original rates, enabling seamless handling of inputs and outputs at multiple sampling rates.
-                    Experimental results on several evaluation datasets, covering sub-tasks and full tasks, demonstrate that UniPASE achieves superior or competitive performance compared with existing state-of-the-art models. 
-                    The proposed model also serves as the backbone of our submission to the URGENT 2026 Challenge, which achieved 1st place in the objective evaluation.
-                </p>
-            </div>
-            <div class="framework-image">
-                <img src="model_framework.png" alt="UniPASE Framework">
-            </div>
-            <div class="image-caption">
-                    <strong>Figure 1:</strong> Overview of the proposed UniPASE framework.
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Audio Demos Section -->
     <div class="narrow-container">
         <div class="section-title">Audio Demos from the DNS 2020 No-reverb Set</div>
@@ -2287,3 +2264,4 @@
 
 
 </html>
+
