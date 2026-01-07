@@ -1,0 +1,1 @@
+fileid_159: [PLCMOS]=3.97, [WER]=0.00%, [text]="thanks so much for sending these along and for everything else you do for librivox i know it may sound a bit shallow but these bits of feedback really make my day cheers", [Delete]=0, [Insert]=0, [Replace]=0, [Equal]=33.

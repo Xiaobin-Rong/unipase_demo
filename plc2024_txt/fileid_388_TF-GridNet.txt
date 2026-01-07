@@ -1,0 +1,1 @@
+fileid_388: [PLCMOS]=3.43, [WER]=30.00%, [text]="you are recording the great gatsby you know you probably do not get a chance to talk to each other but here is what we want to do", [Delete]=3, [Insert]=1, [Replace]=5, [Equal]=22.
