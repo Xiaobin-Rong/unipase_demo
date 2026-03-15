@@ -1,0 +1,1 @@
+fileid_49: [CER]=33.01%, [text]="hmm look at what that cookie does oh what does that look like ever the what exactly is it that you do", [Delete]=10, [Insert]=8, [Replace]=16, [Equal]=77.

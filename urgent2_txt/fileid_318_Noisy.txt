@@ -1,0 +1,1 @@
+fileid_318: [CER]=10.81%, [text]="je dois choisir ce qui m est dû et que m est il dû qu elle peine afflictive ou qu elle amende véritablement qui me suis fait un principe de ne connaître aucun représentant pendant toute la vie", [Delete]=2, [Insert]=9, [Replace]=9, [Equal]=174.

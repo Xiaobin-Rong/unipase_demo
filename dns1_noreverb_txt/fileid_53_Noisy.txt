@@ -1,0 +1,1 @@
+fileid_53: [dWER]=17.86%, [text]="he reached once more into the carpet bag and brought up the package containers he ripped down the cellophane carefully and laid 3 dogs on the team floor", [Delete]=1, [Insert]=1, [Replace]=3, [Equal]=24.

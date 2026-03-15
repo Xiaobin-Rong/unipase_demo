@@ -1,0 +1,1 @@
+fileid_325: [CER]=18.65%, [text]="ordre y se divise en cinq familles et qui comprend la plus grande partie des poissons d eau douce ziquoi la carde le brocher c est cours fit le canadien avec un certain mégroup des poissons", [Delete]=14, [Insert]=10, [Replace]=12, [Equal]=167.

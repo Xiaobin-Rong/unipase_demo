@@ -1,0 +1,1 @@
+fileid_947: [CER]=25.00%, [text]="他为太阳飞者和月球的颜色电影的提出过解释 ", [Delete]=0, [Insert]=1, [Replace]=4, [Equal]=16.

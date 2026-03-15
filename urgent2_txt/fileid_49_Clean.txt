@@ -1,0 +1,1 @@
+fileid_49: [CER]=4.85%, [text]="hm i wonder what their cookie tastes like oh what is that over there so what exactly is it that you do", [Delete]=2, [Insert]=1, [Replace]=2, [Equal]=99.

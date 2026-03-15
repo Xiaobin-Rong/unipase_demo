@@ -1,0 +1,1 @@
+fileid_831: [CER]=0.00%, [text]="科唐坦地区圣莫里克 ", [Delete]=0, [Insert]=0, [Replace]=0, [Equal]=10.

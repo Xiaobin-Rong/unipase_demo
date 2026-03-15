@@ -1,0 +1,1 @@
+fileid_86: [CER]=21.21%, [text]="the battery of mr judge johnson was reported by the herald yesterday", [Delete]=4, [Insert]=6, [Replace]=4, [Equal]=58.

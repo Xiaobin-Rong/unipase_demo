@@ -1,0 +1,1 @@
+fileid_831: [CER]=30.00%, [text]="科堂坦地区圣莫里科", [Delete]=1, [Insert]=0, [Replace]=2, [Equal]=7.

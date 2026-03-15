@@ -1,0 +1,1 @@
+fileid_210: [CER]=16.60%, [text]="während der ganzen zeit meines aufenthalts sah rosa mandarin seine dienstwürdigkeit die fahrt war freundlich und als er nach dem tee ein gespräch mit mir annahm gab er in starken ausdrücken seine zufriedenheit mit dem zu erkennen was ich im morgendlichen tag hat ", [Delete]=10, [Insert]=8, [Replace]=26, [Equal]=229.

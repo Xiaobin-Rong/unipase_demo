@@ -1,0 +1,1 @@
+fileid_388: [PLCMOS]=4.57, [WER]=10.00%, [text]="you are recording the great gatsby you probably do not get a chance to talk to each other but here let me present what is going on in librivox", [Delete]=2, [Insert]=1, [Replace]=0, [Equal]=28.

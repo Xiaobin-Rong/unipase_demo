@@ -1,0 +1,1 @@
+fileid_432: [PLCMOS]=1.61, [WER]=4.00%, [text]="surprisingly capable roman catholic priest father brown is ability to uncover the truth behind the mystery continually surpasses that of the experts around him", [Delete]=1, [Insert]=0, [Replace]=0, [Equal]=24.

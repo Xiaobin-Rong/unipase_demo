@@ -1,0 +1,1 @@
+fileid_49: [CER]=67.96%, [text]="so what exactly is it that you do", [Delete]=70, [Insert]=0, [Replace]=0, [Equal]=33.

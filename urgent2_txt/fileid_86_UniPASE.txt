@@ -1,0 +1,1 @@
+fileid_86: [CER]=13.64%, [text]="the departure of mister john stuff was reported by the herald yesterday", [Delete]=1, [Insert]=6, [Replace]=2, [Equal]=63.

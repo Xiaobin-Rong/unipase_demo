@@ -1,0 +1,1 @@
+fileid_17: [dWER]=19.23%, [text]="the surface is steel sheets before they are treated with castor oil made from castor beans has gone out of style as a medicine", [Delete]=2, [Insert]=0, [Replace]=3, [Equal]=21.

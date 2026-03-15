@@ -1,0 +1,1 @@
+fileid_210: [CER]=15.47%, [text]="der auf der ganzen zeit meines rauchenthalts sah rosamond über verbändungen dienstwürdigkeit ihr vater war freundlich und als er nach dem tee ein gespräch mit mir anging gab er im starken ausdrücken seine zufriedenheit mit dem zu erkennen was ich im morgen mit ihm hatte", [Delete]=3, [Insert]=8, [Replace]=30, [Equal]=232.

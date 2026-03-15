@@ -1,0 +1,1 @@
+fileid_268: [dWER]=25.93%, [text]="she had her dark suit in greasy washcloth on do not ask me to carry an oily rag like that do they make glass wine", [Delete]=2, [Insert]=0, [Replace]=5, [Equal]=20.

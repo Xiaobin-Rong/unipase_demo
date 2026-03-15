@@ -1,0 +1,1 @@
+fileid_49: [CER]=7.77%, [text]="um i wonder what that crappy tastes like oh what is that over there so what exactly is it that you do", [Delete]=2, [Insert]=0, [Replace]=6, [Equal]=95.

@@ -1,0 +1,1 @@
+fileid_290: [dWER]=100.00%, [text]="this is the line doll you curl into the warmth of my hand then you pour a bubble out of the ocean are you looking for a donut allow leeway here", [Delete]=0, [Insert]=10, [Replace]=11, [Equal]=10.
