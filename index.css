@@ -228,14 +228,14 @@ html {
     margin-bottom: 12px;
 }
 
-/* .audio-grid-c3 {
+.audio-grid-c3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-bottom: 12px;
-} */
+}
 
-.audio-grid-c3 {
+.audio-grid-c3p2 {
     display: grid;
     grid-template-columns: repeat(6, 1fr); /* 关键 */
     gap: 25px;
@@ -243,12 +243,12 @@ html {
 }
 
 /* 前 3 个：第一行，每个占 2 列 → 3 个刚好一行 */
-.audio-grid-c3 .audio-card:nth-child(-n+3) {
+.audio-grid-c3p2 .audio-card:nth-child(-n+3) {
     grid-column: span 2;
 }
 
 /* 后 2 个：第二行，每个占 3 列 → 自动居中 */
-.audio-grid-c3 .audio-card:nth-child(n+4) {
+.audio-grid-c3p2 .audio-card:nth-child(n+4) {
     grid-column: span 3;
 }
 
@@ -272,6 +272,11 @@ html {
 .audio-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #f59e0b;
+}
+
+.audio-card.highlight {
+    border: 0.12rem solid;
     border-color: #f59e0b;
 }
 
