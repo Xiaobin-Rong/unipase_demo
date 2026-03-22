@@ -1,1 +1,1 @@
-fileid_325: [CER]=18.65%, [text]="ordre y se divise en cinq familles et qui comprend la plus grande partie des poissons d eau douce ziquoi la carde le brocher c est cours fit le canadien avec un certain mégroup des poissons", [Delete]=14, [Insert]=10, [Replace]=12, [Equal]=167.
+fileid_325: [CER]=17.10%, [text]="ordre y se divise en sainte famille et qui comprend la plus grande partie des poissons beaux douces dit quoi la carde le brocher co fit le canadien avec un certain mécou des poissons beaux douces", [Delete]=8, [Insert]=10, [Replace]=15, [Equal]=170.
